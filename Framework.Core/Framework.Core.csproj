@@ -24,6 +24,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/theraot/Theraot/</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet>
     <AssemblyVersion>3.0.3.0</AssemblyVersion>
     <FileVersion>3.0.3.0</FileVersion>
