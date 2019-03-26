@@ -270,7 +270,11 @@ namespace System.IO
             {
                 while (true)
                 {
+#if PROFILE328
+                    var bytesRead = await source.ReadAsync(buffer, 0, bufferSize, cancellationToken);
+#else
                     var bytesRead = await source.ReadAsync(buffer, 0, bufferSize, cancellationToken).ConfigureAwait(false);
+#endif
                     if (bytesRead == 0)
                     {
                         break;

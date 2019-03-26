@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET45
+﻿#if LESSTHAN_NET45 && !PROFILE328
 
 // BASEDON: https://github.com/dotnet/coreclr/blob/775003a4c72f0acc37eab84628fcef541533ba4e/src/mscorlib/src/System/Reflection/CustomAttributeExtensions.cs
 

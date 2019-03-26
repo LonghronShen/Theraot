@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET45
+﻿#if LESSTHAN_NET45 && !PROFILE328
 
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
@@ -7,9 +7,9 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using Theraot.Collections.ThreadSafe;
+
 #if !FEATURE_DYNAMIC_DELEGATE
 using System.Reflection.Emit;
-
 #endif
 
 namespace System.Dynamic.Utils

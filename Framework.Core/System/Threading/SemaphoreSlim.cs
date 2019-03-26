@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET40
+﻿#if LESSTHAN_NET40 && !PROFILE328
 
 using System.Diagnostics;
 using System.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET40
+﻿#if LESSTHAN_NET40 && !PROFILE328
 
 #pragma warning disable CA2235 // Mark all non-serializable fields
 
@@ -60,6 +60,7 @@ namespace System
             // Empty
         }
 
+#if !PROFILE328
         [SecurityCritical]
         protected AggregateException(SerializationInfo info, StreamingContext context)
             : base(info, context)
@@ -71,6 +72,7 @@ namespace System
 
             InnerExceptions = new ReadOnlyCollection<Exception>(value);
         }
+#endif
 
         private AggregateException(CreationInfo creationInfo)
             : base(creationInfo.String, creationInfo.Exception)
@@ -130,6 +132,7 @@ namespace System
             }
         }
 
+#if !PROFILE328
         [SecurityCritical]
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -144,6 +147,7 @@ namespace System
             InnerExceptions.CopyTo(exceptionArray, 0);
             info.AddValue(nameof(InnerExceptions), exceptionArray, typeof(Exception[]));
         }
+#endif
 
         public void Handle(Func<Exception, bool> predicate)
         {

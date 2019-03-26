@@ -17,7 +17,7 @@ namespace System
             GC.KeepAlive(Enum.GetUnderlyingType(enumType));
             try
             {
-                result = (TEnum)Enum.Parse(enumType, value);
+                result = (TEnum)Enum.Parse(enumType, value, true);
                 return true;
             }
             catch (Exception ex)

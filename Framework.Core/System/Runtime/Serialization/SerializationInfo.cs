@@ -31,7 +31,12 @@ namespace System.Runtime.Serialization
         {
             ObjectType = type ?? throw new ArgumentNullException(nameof(type));
             _rootTypeName = type.FullName;
+
+#if PROFILE328
+            _rootTypeAssemblyName = type.Assembly.FullName;
+#else
             _rootTypeAssemblyName = type.GetTypeInfo().Module.Assembly.FullName;
+#endif
 
             _names = new string[_defaultSize];
             _values = new object[_defaultSize];
@@ -312,7 +317,13 @@ namespace System.Runtime.Serialization
 
             ObjectType = type;
             _rootTypeName = type.FullName;
+
+#if PROFILE328
+            _rootTypeAssemblyName = type.Assembly.FullName;
+#else
             _rootTypeAssemblyName = type.GetTypeInfo().Module.Assembly.FullName;
+#endif
+
             IsFullTypeNameSetExplicit = false;
             IsAssemblyNameSetExplicit = false;
         }

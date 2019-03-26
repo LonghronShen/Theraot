@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET40
+﻿#if LESSTHAN_NET40 && !PROFILE328
 
 #pragma warning disable RCS1191 // Declare enum value as combination of names.
 

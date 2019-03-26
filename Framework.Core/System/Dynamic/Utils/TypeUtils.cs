@@ -79,13 +79,13 @@ namespace System.Dynamic.Utils
             }
 
             // Don't use BindingFlags.Static
-            return Array.Find(type.GetMethods(), method => string.Equals(method.Name, name, StringComparison.Ordinal) && method.IsStatic && method.MatchesArgumentTypes(types));
+            return type.GetMethods().FirstOrDefault(method => string.Equals(method.Name, name, StringComparison.Ordinal) && method.IsStatic && method.MatchesArgumentTypes(types));
         }
 
         internal static MethodInfo GetStaticMethodInternal(this Type type, string name, Type[] types)
         {
             // Don't use BindingFlags.Static
-            return Array.Find(type.GetMethods(), method => string.Equals(method.Name, name, StringComparison.Ordinal) && method.IsStatic && method.MatchesArgumentTypes(types));
+            return type.GetMethods().FirstOrDefault(method => string.Equals(method.Name, name, StringComparison.Ordinal) && method.IsStatic && method.MatchesArgumentTypes(types));
         }
 
         internal static bool HasBuiltInEqualityOperator(Type left, Type right)
@@ -304,7 +304,14 @@ namespace System.Dynamic.Utils
                 throw new ArgumentNullException(nameof(type));
             }
 
+#if PROFILE328
+            return type.GetInterfaces()
+                .Where(currentInterface => currentInterface.IsGenericTypeDefinition)
+                .Select(currentInterface => currentInterface.GetGenericTypeDefinition())
+                .Any(match => interfaceGenericTypeDefinitions.Contains(match));
+#else
             return (from currentInterface in type.GetInterfaces() where currentInterface.IsGenericTypeDefinition select currentInterface.GetGenericTypeDefinition()).Any(match => Array.Exists(interfaceGenericTypeDefinitions, item => item == match));
+#endif
         }
 
         internal static bool IsGenericImplementationOf(this Type type, out Type interfaceType, Type interfaceGenericTypeDefinition)
@@ -339,13 +346,11 @@ namespace System.Dynamic.Utils
             var implementedInterfaces = type.GetInterfaces();
             foreach (var currentInterface in interfaceGenericTypeDefinitions)
             {
-                var index = Array.FindIndex(implementedInterfaces, item => item.IsGenericInstanceOf(currentInterface));
-                if (index == -1)
+                interfaceType = implementedInterfaces.FirstOrDefault(item => item.IsGenericInstanceOf(currentInterface));
+                if (interfaceType == null)
                 {
                     continue;
                 }
-
-                interfaceType = implementedInterfaces[index];
                 return true;
             }
 
@@ -370,7 +375,7 @@ namespace System.Dynamic.Utils
                 throw new ArgumentNullException(nameof(type));
             }
 
-            return type.GetInterfaces().Any(currentInterface => Array.Exists(interfaceTypes, item => currentInterface == item));
+            return type.GetInterfaces().Any(currentInterface => interfaceTypes.Any(item => currentInterface == item));
         }
 
         internal static bool IsImplementationOf(this Type type, out Type interfaceType, params Type[] interfaceTypes)
@@ -383,13 +388,11 @@ namespace System.Dynamic.Utils
             var implementedInterfaces = type.GetInterfaces();
             foreach (var currentInterface in interfaceTypes)
             {
-                var index = Array.FindIndex(implementedInterfaces, item => item == currentInterface);
-                if (index == -1)
+                interfaceType = implementedInterfaces.FirstOrDefault(item => item == currentInterface);
+                if (interfaceType == null)
                 {
                     continue;
                 }
-
-                interfaceType = implementedInterfaces[index];
                 return true;
             }
 

@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NETCOREAPP20 || LESSTHAN_NETSTANDARD20
+﻿#if (LESSTHAN_NETCOREAPP20 || LESSTHAN_NETSTANDARD20) && !PROFILE328
 namespace System.Security
 {
     public interface IPermission : ISecurityEncodable

@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET45
+﻿#if LESSTHAN_NET45 && !PROFILE328
 
 #pragma warning disable CA1030 // Use events where appropriate
 

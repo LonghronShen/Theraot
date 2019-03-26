@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET40 || NETSTANDARD1_0
+﻿#if (LESSTHAN_NET40 || NETSTANDARD1_0) && !PROFILE328
 
 #pragma warning disable CC0014 // Use ternary operator
 #pragma warning disable CC0031 // Check for null before calling a delegate

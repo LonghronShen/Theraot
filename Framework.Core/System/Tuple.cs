@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET40
+﻿#if LESSTHAN_NET40 && !PROFILE328
 
 #pragma warning disable CA1036 // Override methods on comparable types
 #pragma warning disable RCS1212 // Remove redundant assignment.

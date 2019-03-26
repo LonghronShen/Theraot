@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NETSTANDARD13
+﻿#if LESSTHAN_NETSTANDARD13 && !PROFILE328
 #pragma warning disable CA1822 // Mark members as static
 #pragma warning disable CC0091 // Use static method
 

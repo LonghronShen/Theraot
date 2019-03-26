@@ -308,7 +308,9 @@ namespace System.Collections.Generic
             return GetEnumerator();
         }
 
+#if !PROFILE328
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
+#endif
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
         {
             GetObjectData(info, context);

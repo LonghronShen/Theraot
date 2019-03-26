@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET45
+﻿#if LESSTHAN_NET45 && !PROFILE328
 
 #pragma warning disable RECS0017 // Possible compare of value type with 'null'
 

@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET45
+﻿#if LESSTHAN_NET45 && !PROFILE328
 
 #pragma warning disable CC0061 // Asynchronous method can be terminated with the 'Async' keyword.
 #pragma warning disable RECS0017 // Possible compare of value type with 'null'

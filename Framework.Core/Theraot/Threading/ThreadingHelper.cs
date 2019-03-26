@@ -13,7 +13,7 @@ namespace Theraot.Threading
 
         public static void MemoryBarrier()
         {
-#if LESSTHAN_NETCOREAPP20 || TARGETS_NETSTANDARD
+#if (LESSTHAN_NETCOREAPP20 || TARGETS_NETSTANDARD) && !PROFILE328
             Interlocked.MemoryBarrier();
 #else
             Thread.MemoryBarrier();

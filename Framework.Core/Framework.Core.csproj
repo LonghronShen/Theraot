@@ -24,7 +24,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/theraot/Theraot/</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <!--<GenerateDocumentationFile>True</GenerateDocumentationFile>-->
     <CodeAnalysisRuleSet>rules.ruleset</CodeAnalysisRuleSet>
     <AssemblyVersion>3.0.3.0</AssemblyVersion>
     <FileVersion>3.0.3.0</FileVersion>
@@ -111,7 +111,7 @@
     <DefineConstants>TARGETS_NETCORE;LESSTHAN_NETCOREAPP22;LESSTHAN_NETCOREAPP21;LESSTHAN_NETCOREAPP20;LESSTHAN_NETCOREAPP11</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'portable-net4+sl50+win8+wpa81+wp8' ">
-    <DefineConstants>TARGETS_NETSTANDARD;LESSTHAN_NETSTANDARD20;LESSTHAN_NETSTANDARD16;LESSTHAN_NETSTANDARD15;LESSTHAN_NETSTANDARD14;LESSTHAN_NETSTANDARD13;LESSTHAN_NETSTANDARD12;LESSTHAN_NETSTANDARD11;PORTABLE;PROFILE328</DefineConstants>
+    <DefineConstants>TARGETS_NETSTANDARD;LESSTHAN_NETSTANDARD20;LESSTHAN_NETSTANDARD16;LESSTHAN_NETSTANDARD15;LESSTHAN_NETSTANDARD14;LESSTHAN_NETSTANDARD13;LESSTHAN_NETSTANDARD12;LESSTHAN_NETSTANDARD11;LESSTHAN_NET40;LESSTHAN_NET45;PORTABLE;PROFILE328</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
@@ -314,5 +314,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Serialization" />
     <Reference Include="System.Runtime.Serialization" />
+	<PackageReference Include="Microsoft.Bcl.Async" Version="1.0.168" />
   </ItemGroup>
 </Project>

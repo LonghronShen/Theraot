@@ -223,10 +223,7 @@ namespace Theraot.Threading
                 spinWait.SpinOnce();
             }
         }
-    }
-
-    public static partial class ThreadingHelper
-    {
+   
 #if FAT
         public static bool SpinWaitRelativeExchange(ref int check, int value, out int result)
         {
@@ -647,12 +644,7 @@ namespace Theraot.Threading
             spinWait.SpinOnce();
             goto retry;
         }
-#endif
-    }
 
-    public static partial class ThreadingHelper
-    {
-#if FAT
         public static bool SpinWaitRelativeExchange(ref int check, int value, out int result, int milliseconds)
         {
             if (milliseconds < -1)

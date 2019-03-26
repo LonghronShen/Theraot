@@ -1,4 +1,4 @@
-#if LESSTHAN_NET45
+﻿#if LESSTHAN_NET45
 
 #pragma warning disable CA1032 // Implement standard exception constructors
 #pragma warning disable CA1064 // Exceptions should be public
@@ -34,6 +34,7 @@ namespace System.Diagnostics.Contracts
             HResult = ContractHelper.Cor_E_CodeContractFailed;
         }
 
+#if !PROFILE328
         private ContractException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
@@ -41,12 +42,14 @@ namespace System.Diagnostics.Contracts
             UserMessage = info.GetString(nameof(UserMessage));
             Condition = info.GetString(nameof(Condition));
         }
+#endif
 
         public string Condition { get; }
         public ContractFailureKind Kind { get; }
 
         public string UserMessage { get; }
 
+#if !PROFILE328
         [SecurityCritical]
         [SecurityPermission(SecurityAction.LinkDemand, Flags = SecurityPermissionFlag.SerializationFormatter)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -57,6 +60,7 @@ namespace System.Diagnostics.Contracts
             info.AddValue(nameof(UserMessage), UserMessage);
             info.AddValue(nameof(Condition), Condition);
         }
+#endif
     }
 }
 

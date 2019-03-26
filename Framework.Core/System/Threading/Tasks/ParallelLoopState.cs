@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET40 || NETSTANDARD1_0
+﻿#if (LESSTHAN_NET40 || NETSTANDARD1_0) && !PROFILE328
 
 #pragma warning disable CA1815 // Override equals and operator equals on value types
 

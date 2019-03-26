@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET35
+﻿#if LESSTHAN_NET35 || PROFILE328
 
 using System.Runtime.Serialization;
 
@@ -24,11 +24,13 @@ namespace System.Threading
             // Empty
         }
 
+#if !PROFILE328
         protected LockRecursionException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             // Empty
         }
+#endif
     }
 }
 

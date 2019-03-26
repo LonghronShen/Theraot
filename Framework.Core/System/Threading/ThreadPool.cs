@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NETSTANDARD13
+﻿#if LESSTHAN_NETSTANDARD13 && !PROFILE328
 using Theraot.Collections.ThreadSafe;
 
 namespace System.Threading

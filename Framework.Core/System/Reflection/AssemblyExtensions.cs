@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NETSTANDARD13
+﻿#if LESSTHAN_NETSTANDARD13 && !PROFILE328
 using System.Linq;
 
 namespace System.Reflection

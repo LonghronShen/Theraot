@@ -7,12 +7,16 @@
 
 namespace System.Security
 {
-    [Runtime.InteropServices.ComVisible(true)]
-    public interface ISecurityEncodable
+    internal interface ISecurityElementFactory
     {
-        SecurityElement ToXml();
+        SecurityElement CreateSecurityElement();
 
-        void FromXml(SecurityElement e);
+        object Copy();
+
+        string GetTag();
+
+        string Attribute(string attributeName);
     }
 }
+
 #endif

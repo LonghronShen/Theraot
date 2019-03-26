@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NET40
+﻿#if LESSTHAN_NET40 && !PROFILE328
 
 #pragma warning disable CA1063 // Implement IDisposable Correctly
 #pragma warning disable CA1068 // CancellationToken parameters must come last

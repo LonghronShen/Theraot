@@ -27,11 +27,13 @@ namespace Theraot.Core
             // Empty
         }
 
+#if !PROFILE328
         protected InternalSpecialCancelException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
             // Empty
         }
+#endif
     }
 }
 

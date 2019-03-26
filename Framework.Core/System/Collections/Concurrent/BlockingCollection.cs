@@ -13,7 +13,9 @@ namespace System.Collections.Concurrent
 {
     [ComVisible(false)]
     [DebuggerDisplay("Count = {Count}")]
+#if !PROFILE328
     [HostProtection(SecurityAction.LinkDemand, Synchronization = true, ExternalThreading = true)]
+#endif
     public class BlockingCollection<T> : ICollection, IDisposable, IReadOnlyCollection<T>
     {
         private PrivateData _data;

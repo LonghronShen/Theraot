@@ -1,4 +1,4 @@
-﻿#if LESSTHAN_NETSTANDARD12
+﻿#if LESSTHAN_NETSTANDARD12 && !PROFILE328
 using System.Threading.Tasks;
 
 namespace System.Threading
